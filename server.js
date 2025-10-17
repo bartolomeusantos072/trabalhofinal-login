@@ -2,6 +2,10 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
+// Configuração do EJS
+app.set('view engine', 'ejs');
+app.set('views', './views'); // Diz ao Express onde buscar os arquivos .ejs
+
 // Configuração mínima (para receber dados de formulário)
 app.use(express.urlencoded({ extended: true }));
 
