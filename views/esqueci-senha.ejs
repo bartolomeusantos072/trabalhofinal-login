@@ -6,13 +6,19 @@
 </head>
 <body>
     <h1>Recuperação de Senha</h1>
-    <p>Insira seu e-mail para receber as instruções de recuperação.</p>
-    <form method="POST" action="/esqueci-senha">
-        <label for="email">E-mail:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
-        
-        <button type="submit">Enviar Instruções</button>
-    </form>
+    
+    <% if (typeof message !== 'undefined' && message) { %>
+        <p style="color: green;">
+            <%= message %>
+        </p>
+    <% } else { %>
+        <p>Insira seu e-mail para receber as instruções de recuperação.</p>
+        <form method="POST" action="/esqueci-senha">
+            <label for="email">E-mail:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            <button type="submit">Enviar Instruções</button>
+        </form>
+    <% } %>
 
     <p><a href="/">Voltar para o Login</a></p>
 </body>
