@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Este projeto foi desenvolvido como trabalho final da disciplina [Nome da Disciplina] e tem como objetivo aplicar conceitos de desenvolvimento web, testes automatizados e controle de versão (Git/GitHub) em uma aplicação web simples usando Node.js.
+Este projeto foi desenvolvido como trabalho final da disciplina ENGENHARIA DE SOFTWARE e tem como objetivo aplicar conceitos de desenvolvimento web, testes automatizados e controle de versão (Git/GitHub) em uma aplicação web simples usando Node.js.
 
 ---
 
