@@ -1,4 +1,4 @@
-# [Sistema de Autenticação Simples em Node.js]
+# Sistema de Autenticação Simples em Node.js
 
 ## Objetivo
 
