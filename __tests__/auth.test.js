@@ -127,3 +127,44 @@ describe('Testes da Rota de Cadastro: GET /cadastro e POST /cadastro', () => {
         expect(mockDb.getAllUsers().length).toBe(initialCount);
     });
 });
+
+// ===================================================================
+// ROTAS DE ESQUECI A SENHA
+// ===================================================================
+
+describe('Testes da Rota de Esqueci a Senha: GET /esqueci-senha e POST /esqueci-senha', () => {
+
+    // Teste de Integração (GET /esqueci-senha)
+    test('GET /esqueci-senha deve renderizar a tela corretamente (200)', async () => {
+        const response = await request(app).get('/esqueci-senha');
+        
+        expect(response.statusCode).toBe(200);
+        // Assumindo que o título da view é "Esqueceu a Senha"
+        expect(response.text).toContain('<h1>Recuperação de Senha</h1>'); 
+    });
+
+    // Teste de Aceitação (POST /esqueci-senha - Processamento de E-mail)
+    test('POST /esqueci-senha deve simular o envio do e-mail e renderizar a mensagem de sucesso (200)', async () => {
+        const testEmail = 'email@recuperacao.com';
+        
+        // Espionamos o console.log para verificar a simulação do envio de e-mail
+        const logSpy = jest.spyOn(console, 'log');
+
+        const response = await request(app)
+            .post('/esqueci-senha')
+            .type('form')
+            .send({ email: testEmail });
+
+        // 1. Verifica se a rota processou e retornou a página (não redirecionou)
+        expect(response.statusCode).toBe(200);
+
+        // 2. Verifica se a mensagem de sucesso está na página renderizada
+        expect(response.text).toContain(`As instruções de recuperação foram enviadas para ${testEmail} (simulado).`);
+
+        // 3. Verifica se a simulação (o console.log) foi executada no servidor
+        expect(logSpy).toHaveBeenCalledWith(`[MOCK] E-mail de recuperação simulado enviado para: ${testEmail}`);
+        
+        // Limpa o spy para não afetar outros testes
+        logSpy.mockRestore(); 
+    });
+});
