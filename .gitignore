@@ -1,4 +1,12 @@
 # Conteúdo do .gitignore
 /node_modules
+# Arquivos de Cobertura
+.coverage
+.coverage.*
+htmlcov/
+coverage/
+coverage.out
+cobertura.xml
+/coverage
 .env
 *.log
