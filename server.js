@@ -1,8 +1,9 @@
 const express = require('express');
+const path = require('path'); 
 const app = express();
 const PORT = 3000;
 
-app.use(express.static('public')); // <--- ADICIONE ESTA LINHA AQUI
+app.use(express.static(path.join(__dirname, 'public')));
 // Configuração do EJS
 app.set('view engine', 'ejs');
 app.set('views', './views'); // Diz ao Express onde buscar os arquivos .ejs
